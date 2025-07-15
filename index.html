@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>3D Model Viewer</title>
+  <title>3D OBJ Viewer</title>
   <style>
     body { margin: 0; overflow: hidden; }
     canvas { display: block; }
@@ -10,9 +10,9 @@
 </head>
 <body>
   <script type="module">
-    import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-    import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-    import { OBJLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/OBJLoader.js';
+    import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+    import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+    import { OBJLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/OBJLoader.js';
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -25,18 +25,20 @@
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
 
-    scene.add(new THREE.AmbientLight(0x404040));
+    // Lights
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(1, 1, 1);
     scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040));
 
+    // Load OBJ
     const loader = new OBJLoader();
-    loader.load('model.obj', function (object) {
+    loader.load('model.obj', (object) => {
       object.scale.set(1, 1, 1);
       scene.add(object);
       animate();
-    }, undefined, function (error) {
-      console.error('Error loading model:', error);
+    }, undefined, (error) => {
+      console.error('Error loading OBJ:', error);
     });
 
     function animate() {
