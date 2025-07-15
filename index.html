@@ -1,18 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Sketchfab Viewer</title>
+    <meta charset="UTF-8" />
+    <title>SPERO 3D Viewer</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+      }
+      iframe {
+        display: block;
+        margin: 0 auto;
+        border: none;
+      }
+      section {
+        max-width: 800px;
+        margin: 2rem auto;
+        background: #fff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      a {
+        color: #007acc;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
-    <h1>My 3D Model</h1>
-    <iframe title="A 3D model"
-      frameborder="0"
-      allowfullscreen
-      mozallowfullscreen="true"
-      webkitallowfullscreen="true"
+    <h1>SPERO 3D Viewer</h1>
+
+    <!-- Sketchfab Embed -->
+    <iframe title="SPERO 3D Model"
       width="800"
       height="600"
-      src="https://sketchfab.com/3d-models/transperth-a-series-90s-electric-passenger-train-2be42ce40ccd4fc0bfcf1eee2fa0ce43/embed">
+      src="https://sketchfab.com/3d-models/transperth-a-series-90s-electric-passenger-train-2be42ce40ccd4fc0bfcf1eee2fa0ce43/embed"
+      allowfullscreen
+      mozallowfullscreen="true"
+      webkitallowfullscreen="true">
     </iframe>
+
+    <!-- SPERO Markdown Content (Converted to HTML) -->
+    <section>
+      <h2>SPERO Log Data</h2>
+      <p>
+        <a href="https://review.px4.io/plot_app?log=59abd357-c150-43dc-ab45-fffcb30aecb7" target="_blank">
+          View PX4 Log Data
+        </a>
+      </p>
+      <p>
+        Second flight:
+        <a href="https://review.px4.io/plot_app?log=b97a13e2-f6ca-4a8a-86a8-33768d93fd0b" target="_blank">
+          https://review.px4.io/plot_app?log=b97a13e2-f6ca-4a8a-86a8-33768d93fd0b
+        </a>
+      </p>
+    </section>
   </body>
 </html>
