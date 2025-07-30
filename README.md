@@ -1,4 +1,12 @@
 # SPERO
-[View PX4 Log Data](https://review.px4.io/plot_app?log=59abd357-c150-43dc-ab45-fffcb30aecb7)
 
-Second flight: https://review.px4.io/plot_app?log=b97a13e2-f6ca-4a8a-86a8-33768d93fd0b
+**Paper:** Unlocking Stopped-Rotor Flight: Development and Validation of SPERO, a Novel UAV Platform
+**Authors:** [Redacted for anonymity]
+
+---
+
+## Overview
+This website provides design files, images, documentation, and othe relevant materials for facilitating the recreation, adaptation, and further development of SPERO. 
+
+## CAD Models
+The full CAD model can be found at [], while the model and key features can be manipulated in the gui at the top of the page. 
