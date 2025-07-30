@@ -195,6 +195,70 @@
     </ul>
   </section>
 
+  <section id="custom-controller">
+  <h2>Using the Custom PX4 Controller</h2>
+
+  <p>This project includes a custom flight controller generated from Simulink using the UAV Toolbox Support Package for PX4. You can integrate and build it directly into the PX4 firmware without requiring MATLAB.</p>
+
+  <h3>📦 What You Need</h3>
+  <ul>
+    <li>Ubuntu 20.04 or newer</li>
+    <li>PX4-Autopilot source code</li>
+    <li>GNU ARM toolchain and PX4 build dependencies</li>
+    <li>QGroundControl (to flash firmware)</li>
+  </ul>
+
+  <h3>🛠 Setup Instructions</h3>
+
+  <ol>
+    <li>
+      <strong>Install PX4 build tools:</strong><br />
+      <pre><code>bash &lt;(curl -s https://raw.githubusercontent.com/PX4/PX4-Autopilot/main/Tools/setup/ubuntu.sh)</code></pre>
+    </li>
+
+    <li>
+      <strong>Clone PX4 firmware:</strong><br />
+      <pre><code>git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+cd PX4-Autopilot</code></pre>
+    </li>
+
+    <li>
+      <strong>Add the Simulink-generated module:</strong><br />
+      <p>Copy the <code>px4_simulink_app</code> folder (from the downloaded ZIP) into:</p>
+      <pre><code>PX4-Autopilot/src/modules/</code></pre>
+      <p>It should contain files like <code>ert_main.cpp</code>, <code>buildover_fullstatemachine.cpp</code>, and a <code>CMakeLists.txt</code>.</p>
+    </li>
+
+    <li>
+      <strong>Build the PX4 firmware:</strong><br />
+      <pre><code>make px4_fmu-v5_default</code></pre>
+      <p>(Replace target as needed for your hardware.)</p>
+    </li>
+
+    <li>
+      <strong>Flash the firmware to the controller:</strong><br />
+      <p>Use QGroundControl, select <strong>Custom Firmware</strong>, and choose:</p>
+      <pre><code>build/px4_fmu-v5_default/firmware.px4</code></pre>
+    </li>
+
+    <li>
+      <strong>Start the controller module:</strong><br />
+      <p>Connect to the MAVLink shell and run:</p>
+      <pre><code>px4_simulink_app start</code></pre>
+    </li>
+  </ol>
+
+  <h3>ℹ️ Tips</h3>
+  <ul>
+    <li>To stop the controller: <code>px4_simulink_app stop</code></li>
+    <li>If build fails, try <code>make clean</code> before rebuilding.</li>
+    <li>The controller logic runs in <code>ert_main.cpp</code> using the generated model step function.</li>
+  </ul>
+
+  <p>📥 <a href="PX4_Custom_Controller.zip" download>Download Simulink-Generated PX4 Module (ZIP)</a></p>
+</section>
+
+
   <!-- Footer -->
   <footer>
     © 2025 Kristan Hilby -- SPERO
