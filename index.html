@@ -134,6 +134,15 @@
       color: var(--text-color);
     }
 
+    :target::before {
+      content: "";
+      display: block;
+      height: 80px; /* adjust as needed */
+      margin-top: -80px;
+      visibility: hidden;
+    }
+
+
     @media (max-width: 600px) {
       header nav {
         flex-direction: column;
@@ -165,12 +174,17 @@
 
   <!-- Main Content -->
   <main>
-    <!-- 3D Model Viewer -->
+    <section id="intro">
+      <h2>Welcome to SPERO Supplemental Documentation</h2>
+      <p>SPERO is a stopped-prentarotor uncrewed aerial vehicle capable of bidirectional transition. Explore the 3D model, download the design files, and learn how to flash the onboard flight controller with our custom PX4 firmware.</p>
+    </section>
+
+    <!-- SPERO Model Viewer -->
     <section id="viewer">
-      <h2>3D Model Viewer</h2>
+      <h2>SPERO Model Viewer</h2>
       <div class="viewer-container">
         <iframe
-          title="SPERO 3D Model"
+          title="SPERO Model Viewer"
           allow="autoplay; fullscreen; xr-spatial-tracking"
           allowfullscreen
           mozallowfullscreen="true"
@@ -188,10 +202,10 @@
   <section id="downloads">
     <h2>Project Files</h2>
     <ul>
-      <li><a href="https://github.com/kristanhilby/SPERO/tree/main/3D%20Printed%20Files" target="_blank">📦 3D Printed Files</a> — STL and STEP files for printed parts. </li>
-      <li><a href="https://github.com/kristanhilby/SPERO/tree/main/CNC%20Machined%20Files" target="_blank">🛠 CNC Machined Files</a> — STEP files of the machined components. </li>
-      <li><a href="https://github.com/kristanhilby/SPERO/tree/main/Waterjet%20Files" target="_blank">💧 Waterjet Files</a> — DXF files for waterjet components. </li>
-      <li><a href="https://github.com/kristanhilby/SPERO/tree/main/PX4%20Firmware" target="_blank">🧠 Custom PX4 Code</a> — Modified PX4 source code for flight controller. </li>
+      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">📦 3D Printer Files</a> — STL and STEP files for printed parts. </li>
+      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🛠 CNC Machined Part Files</a> — STEP files of the machined components. </li>
+      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">💧 Waterjet Part Files</a> — DXF files for waterjet components. </li>
+      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🧠 Custom PX4 Code</a> — Modified PX4 source code for flight controller. </li>
     </ul>
   </section>
 
