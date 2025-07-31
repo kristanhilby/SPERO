@@ -205,6 +205,7 @@
       <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">📦 3D Printer Files</a> — STL and STEP files for printed parts. </li>
       <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🛠 CNC Machined Part Files</a> — STEP files of the machined components. </li>
       <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">💧 Waterjet Part Files</a> — DXF files for waterjet components. </li>
+      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🚀 Simulink Flight Controller File</a> — Simulink model of the custom flight controller. </li>
       <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🧠 Custom PX4 Code</a> — Modified PX4 source code for flight controller. </li>
     </ul>
   </section>
@@ -217,7 +218,7 @@
   <h3>📦 What You Need</h3>
   <ul>
     <li>Ubuntu 20.04 or newer</li>
-    <li>PX4-Autopilot source code</li>
+    <li>PX4-Autopilot source code v1.12</li>
     <li>GNU ARM toolchain and PX4 build dependencies</li>
     <li>QGroundControl (to flash firmware)</li>
   </ul>
@@ -238,9 +239,8 @@ cd PX4-Autopilot</code></pre>
 
     <li>
       <strong>Add the Simulink-generated module:</strong><br />
-      <p>Copy the <code>px4_simulink_app</code> folder (from the downloaded ZIP) into:</p>
+      <p>Copy the href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank"> custom PX4 code</a> folder into:</p>
       <pre><code>PX4-Autopilot/src/modules/</code></pre>
-      <p>It should contain files like <code>ert_main.cpp</code>, <code>buildover_fullstatemachine.cpp</code>, and a <code>CMakeLists.txt</code>.</p>
     </li>
 
     <li>
@@ -269,7 +269,6 @@ cd PX4-Autopilot</code></pre>
     <li>The controller logic runs in <code>ert_main.cpp</code> using the generated model step function.</li>
   </ul>
 
-  <p>📥 <a href="PX4_Custom_Controller.zip" download>Download Simulink-Generated PX4 Module (ZIP)</a></p>
 </section>
 
 
