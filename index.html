@@ -176,7 +176,7 @@
   <main>
     <section id="intro">
       <h2>Welcome to SPERO Supplemental Documentation</h2>
-      <p>SPERO is a stopped-prentarotor uncrewed aerial vehicle capable of bidirectional transition. Explore the 3D model, download the design files, and learn how to flash the onboard flight controller with our custom PX4 firmware.</p>
+      <p>SPERO is a stopped-pentarotor uncrewed aerial vehicle capable of bidirectional transition. Explore the 3D model, download the design files, and learn how to upload our custom flight controller software to the Pixhawk board.</p>
     </section>
 
     <!-- SPERO Model Viewer -->
@@ -205,7 +205,7 @@
         <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">📦 3D Printer Files</a> — STL and STEP files for printed parts. </li>
         <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🛠 CNC Machined Part Files</a> — STEP files of the machined components. </li>
         <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">💧 Waterjet Part Files</a> — DXF files for waterjet components. </li>
-        <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🚀 Simulink Flight Controller File</a> — Simulink model of the custom flight controller. </li>
+        <li><a href="https://anonymous.4open.science/r/SPERO-4A02/Simulink%20Controller/buildover_fullstatemachine.slx" target="_blank">🚀 Simulink Flight Controller File</a> — Simulink model of the custom flight controller. </li>
         <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🧠 Custom PX4 Code</a> — Modified PX4 source code for flight controller. </li>
       </ul>
     </section>
@@ -225,7 +225,7 @@
     <h4>🔗 Files You Need</h4>
     <ul>
       <li>
-        <a href="https://github.com/kristanhilby/SPERO/tree/main/Simulink%20PX4%20Model" target="_blank">
+        <a href="https://anonymous.4open.science/r/SPERO-4A02/Simulink%20Controller/buildover_fullstatemachine.slx" target="_blank">
           📁 Simulink PX4 Model (GitHub)
         </a>
         — Includes the Simulink `.slx` file and configuration for PX4 deployment.
@@ -243,23 +243,27 @@
     <h4>⚙️ Setup Steps</h4>
     <ol>
       <li>
-        <strong>Install PX4 build tools:</strong><br />
-        <pre><code>bash &lt;(curl -s https://raw.githubusercontent.com/PX4/PX4-Autopilot/main/Tools/setup/ubuntu.sh)</code></pre>
+        <strong>Install the PX4 Support Package:</strong><br />
+        Follow the official MathWorks instructions to install required packages and configure your environment:
+        <br />
+        <a href="https://www.mathworks.com/help/uav/setup-and-configuration-px4.html?s_tid=CRUX_lftnav" target="_blank">
+          https://www.mathworks.com/help/uav/setup-and-configuration-px4.html
+        </a>
       </li>
 
       <li>
         <strong>Open Simulink Model:</strong><br />
-        Launch MATLAB and open the `.slx` file from the GitHub folder.
+        Launch MATLAB and open the `.slx` file from the <a href="https://anonymous.4open.science/r/SPERO-4A02/Simulink%20Controller/buildover_fullstatemachine.slx" target="_blank"> GitHub folder</a>.
       </li>
 
       <li>
         <strong>Configure PX4 Target:</strong><br />
-        Use the UAV Toolbox to select your flight controller (e.g., Pixhawk 4).
+        Use the UAV Toolbox to select your hardware (e.g., Pixhawk 6X) and configure build options.
       </li>
 
       <li>
         <strong>Build and Deploy:</strong><br />
-        Click <code>Build</code> in Simulink to generate and deploy custom firmware.
+        Click <code>Build</code> in Simulink. This will generate a PX4 firmware binary and walk you through the steps to flash it on the flight controller.
       </li>
     </ol>
 
@@ -282,7 +286,7 @@
       <li>QGroundControl (to flash firmware)</li>
       <li>
         <a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">
-          📂 Custom PX4 Controller Files (4Open Science)
+          📂 Custom PX4 Controller Files
         </a>
       </li>
     </ul>
