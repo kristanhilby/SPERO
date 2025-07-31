@@ -200,77 +200,139 @@
 
   <!-- Project Files Section -->
   <section id="downloads">
-    <h2>Project Files</h2>
+      <h2>Project Files</h2>
+      <ul>
+        <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">📦 3D Printer Files</a> — STL and STEP files for printed parts. </li>
+        <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🛠 CNC Machined Part Files</a> — STEP files of the machined components. </li>
+        <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">💧 Waterjet Part Files</a> — DXF files for waterjet components. </li>
+        <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🚀 Simulink Flight Controller File</a> — Simulink model of the custom flight controller. </li>
+        <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🧠 Custom PX4 Code</a> — Modified PX4 source code for flight controller. </li>
+      </ul>
+    </section>
+
+    <section id="custom-controller">
+    <h2>Using the Custom PX4 Controller</h2>
+
+    <p>
+      This project includes a custom PX4 flight controller built in Simulink using the UAV Toolbox Support Package for PX4. You can integrate and build it directly into the PX4 firmware using Simulink (preferred), or compile it from source using the pre-generated code.
+    </p>
+
+    <h3>🚀 Option 1: Build from Simulink Model (Recommended)</h3>
+    <p>
+      If you have access to MATLAB/Simulink, this method allows you to generate and deploy a fully custom PX4 firmware with editable control logic.
+    </p>
+
+    <h4>🔗 Files You Need</h4>
     <ul>
-      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">📦 3D Printer Files</a> — STL and STEP files for printed parts. </li>
-      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🛠 CNC Machined Part Files</a> — STEP files of the machined components. </li>
-      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">💧 Waterjet Part Files</a> — DXF files for waterjet components. </li>
-      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🚀 Simulink Flight Controller File</a> — Simulink model of the custom flight controller. </li>
-      <li><a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">🧠 Custom PX4 Code</a> — Modified PX4 source code for flight controller. </li>
+      <li>
+        <a href="https://github.com/kristanhilby/SPERO/tree/main/Simulink%20PX4%20Model" target="_blank">
+          📁 Simulink PX4 Model (GitHub)
+        </a>
+        — Includes the Simulink `.slx` file and configuration for PX4 deployment.
+      </li>
+    </ul>
+
+    <h4>🧰 Requirements</h4>
+    <ul>
+      <li>MATLAB R2021b or newer</li>
+      <li>Simulink + UAV Toolbox Support Package for PX4</li>
+      <li>Ubuntu 20.04 or newer (for building/deploying firmware)</li>
+      <li>QGroundControl</li>
+    </ul>
+
+    <h4>⚙️ Setup Steps</h4>
+    <ol>
+      <li>
+        <strong>Install PX4 build tools:</strong><br />
+        <pre><code>bash &lt;(curl -s https://raw.githubusercontent.com/PX4/PX4-Autopilot/main/Tools/setup/ubuntu.sh)</code></pre>
+      </li>
+
+      <li>
+        <strong>Open Simulink Model:</strong><br />
+        Launch MATLAB and open the `.slx` file from the GitHub folder.
+      </li>
+
+      <li>
+        <strong>Configure PX4 Target:</strong><br />
+        Use the UAV Toolbox to select your flight controller (e.g., Pixhawk 4).
+      </li>
+
+      <li>
+        <strong>Build and Deploy:</strong><br />
+        Click <code>Build</code> in Simulink to generate and deploy custom firmware.
+      </li>
+    </ol>
+
+    <p>📘 For official reference, see the <a href="https://www.mathworks.com/help/uav/ug/getting-started-with-px4-hardware.html" target="_blank">MathWorks UAV Toolbox PX4 Guide</a>.</p>
+
+    <hr />
+
+    <h3>🛠 Option 2: Build from Source with Pre-Generated Controller Files</h3>
+    <p>
+      If you do not have access to MATLAB/Simulink, you can still build the firmware manually using the generated C++ code.
+    </p>
+    <p><strong>⚠️ Note:</strong> This method has <em>not been fully tested</em> with the current PX4 version. It is provided as-is for users familiar with PX4's build system and troubleshooting compiler issues.</p>
+
+
+    <h4>📦 What You Need</h4>
+    <ul>
+      <li>Ubuntu 20.04 or newer</li>
+      <li>PX4-Autopilot source code <strong>v1.12</strong></li>
+      <li>GNU ARM toolchain and PX4 build dependencies</li>
+      <li>QGroundControl (to flash firmware)</li>
+      <li>
+        <a href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank">
+          📂 Custom PX4 Controller Files (4Open Science)
+        </a>
+      </li>
+    </ul>
+
+    <h4>🧪 Setup Instructions</h4>
+    <ol>
+      <li>
+        <strong>Install PX4 build tools:</strong><br />
+        <pre><code>bash &lt;(curl -s https://raw.githubusercontent.com/PX4/PX4-Autopilot/main/Tools/setup/ubuntu.sh)</code></pre>
+      </li>
+
+      <li>
+        <strong>Clone PX4 firmware (v1.12):</strong><br />
+        <pre><code>git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+  cd PX4-Autopilot
+  git checkout v1.12.3</code></pre>
+      </li>
+
+      <li>
+        <strong>Add the Simulink-generated module:</strong><br />
+        Download and copy the <code>px4_simulink_app</code> folder into:
+        <pre><code>PX4-Autopilot/src/modules/</code></pre>
+      </li>
+
+      <li>
+        <strong>Build the PX4 firmware:</strong><br />
+        <pre><code>make px4_fmu-v5_default</code></pre>
+        <p>(Replace the target depending on your flight controller.)</p>
+      </li>
+
+      <li>
+        <strong>Flash the firmware:</strong><br />
+        Use QGroundControl → Custom Firmware → Select:
+        <pre><code>build/px4_fmu-v5_default/firmware.px4</code></pre>
+      </li>
+
+      <li>
+        <strong>Start the controller module:</strong><br />
+        Open MAVLink shell and run:
+        <pre><code>px4_simulink_app start</code></pre>
+      </li>
+    </ol>
+
+    <h4>ℹ️ Tips</h4>
+    <ul>
+      <li>To stop the controller: <code>px4_simulink_app stop</code></li>
+      <li>If build fails: try <code>make clean</code> before rebuilding</li>
+      <li>Core logic lives in <code>ert_main.cpp</code> and generated model files</li>
     </ul>
   </section>
-
-  <section id="custom-controller">
-  <h2>Using the Custom PX4 Controller</h2>
-
-  <p>This project includes a custom flight controller generated from Simulink using the UAV Toolbox Support Package for PX4. You can integrate and build it directly into the PX4 firmware without requiring MATLAB.</p>
-
-  <h3>📦 What You Need</h3>
-  <ul>
-    <li>Ubuntu 20.04 or newer</li>
-    <li>PX4-Autopilot source code v1.12</li>
-    <li>GNU ARM toolchain and PX4 build dependencies</li>
-    <li>QGroundControl (to flash firmware)</li>
-  </ul>
-
-  <h3>🛠 Setup Instructions</h3>
-
-  <ol>
-    <li>
-      <strong>Install PX4 build tools:</strong><br />
-      <pre><code>bash &lt;(curl -s https://raw.githubusercontent.com/PX4/PX4-Autopilot/main/Tools/setup/ubuntu.sh)</code></pre>
-    </li>
-
-    <li>
-      <strong>Clone PX4 firmware:</strong><br />
-      <pre><code>git clone https://github.com/PX4/PX4-Autopilot.git --recursive
-cd PX4-Autopilot</code></pre>
-    </li>
-
-    <li>
-      <strong>Add the Simulink-generated module:</strong><br />
-      <p>Copy the href="https://anonymous.4open.science/r/SPERO-4A02/README.md" target="_blank"> custom PX4 code</a> folder into:</p>
-      <pre><code>PX4-Autopilot/src/modules/</code></pre>
-    </li>
-
-    <li>
-      <strong>Build the PX4 firmware:</strong><br />
-      <pre><code>make px4_fmu-v5_default</code></pre>
-      <p>(Replace target as needed for your hardware.)</p>
-    </li>
-
-    <li>
-      <strong>Flash the firmware to the controller:</strong><br />
-      <p>Use QGroundControl, select <strong>Custom Firmware</strong>, and choose:</p>
-      <pre><code>build/px4_fmu-v5_default/firmware.px4</code></pre>
-    </li>
-
-    <li>
-      <strong>Start the controller module:</strong><br />
-      <p>Connect to the MAVLink shell and run:</p>
-      <pre><code>px4_simulink_app start</code></pre>
-    </li>
-  </ol>
-
-  <h3>ℹ️ Tips</h3>
-  <ul>
-    <li>To stop the controller: <code>px4_simulink_app stop</code></li>
-    <li>If build fails, try <code>make clean</code> before rebuilding.</li>
-    <li>The controller logic runs in <code>ert_main.cpp</code> using the generated model step function.</li>
-  </ul>
-
-</section>
-
 
   <!-- Footer -->
   <footer>
