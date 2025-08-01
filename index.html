@@ -12,9 +12,9 @@
     :root {
       --bg-color: #f9f9f9;
       --text-color: #333;
-      --link-color: #7696f0;
+      --link-color: #69a4fd;
       --section-bg: #fff;
-      --footer-bg: #eee;
+      --footer-bg: #999999;
       --nav-bg: #999999;
       --highlight-color: #e8f4ff;
     }
@@ -22,7 +22,7 @@
     body.dark {
       --bg-color: #121212;
       --text-color: #e0e0e0;
-      --link-color: #7696f0;
+      --link-color: #69a4fd;
       --section-bg: #1e1e1e;
       --footer-bg: #1a1a1a;
       --nav-bg: #1f1f1f;
@@ -40,6 +40,8 @@
 
     header {
       position: sticky;
+      top: 0;
+      z-index: 1000;
       background-color: var(--nav-bg);
       color: white;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
